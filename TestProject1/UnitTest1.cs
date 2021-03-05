@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using IndianCensusDay22
+using IndianCensusDay22;
 
 namespace TestProject1
 {
