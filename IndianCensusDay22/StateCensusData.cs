@@ -22,8 +22,6 @@ namespace IndianCensusDay22
         /// <summary>
         /// Initializes a new instance of the <see cref="StateCensusData"/> class.
         /// </summary>
-
-
         public StateCensusData(string state, string population, string area, string density)
         {
             this.state = state;
@@ -31,12 +29,12 @@ namespace IndianCensusDay22
             this.area = Convert.ToInt32(area);
             this.density = Convert.ToInt32(density);
         }
-        public StateCensusData(StateCode censusStateCode)
+        public StateCensusData(StateCode StateCode)
         {
-            this.stateName = censusStateCode.stateName;
-            this.serialNumber = censusStateCode.serialNumber;
-            this.tin = censusStateCode.tin;
-            this.stateCode = censusStateCode.stateCode;
+            this.stateName = StateCode.stateName;
+            this.serialNumber = StateCode.serialNumber;
+            this.tin = StateCode.tin;
+            this.stateCode = StateCode.stateCode;
         }
     }
 }

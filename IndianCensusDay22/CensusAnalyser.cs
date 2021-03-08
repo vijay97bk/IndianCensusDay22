@@ -20,27 +20,23 @@ namespace IndianCensusDay22
         public Dictionary<string, StateCensusData> LoadCensusData(string csvFilePath, string dataHeaders)
         {
             datamap = new Dictionary<string, StateCensusData>();
-            // Check file is exist or not 
-            if (!File.Exists(csvFilePath))
+            if (!File.Exists(csvFilePath))//Check file exist
             {
                 throw new CustomExceptions(CustomExceptions.ExceptionType.FILE_NOT_EXISTS, "File does not exists");
             }
-            //Check file extention is proper or not
-            if (Path.GetExtension(csvFilePath) != ".csv")
+            if (Path.GetExtension(csvFilePath) != ".csv")//this method gets extension of file and we are checking if it is .csv or not 
             {
-                throw new CustomExceptions(CustomExceptions.ExceptionType.IMPROPER_EXTENSION, "Improper file extension");
+                throw new CustomExceptions(CustomExceptions.ExceptionType.WRONG_EXTENSION, "wrong file extension");
             }
-
-            //Check data header is correct or not
             string[] censusData = File.ReadAllLines(csvFilePath);
-            if (censusData[0] != dataHeaders)
+            if (censusData[0] != dataHeaders)//Checking first line is same or not (Headers)
             {
                 throw new CustomExceptions(CustomExceptions.ExceptionType.INCORRECT_HEADER, "Incorrect Header ");
             }
-            //Check for delimiter is available or not for this skipping header check all the data
+           
             foreach (string row in censusData.Skip(1))
             {
-                if (!row.Contains(","))
+                if (!row.Contains(","))//Check data is seperated with "," or not
                 {
                     throw new CustomExceptions(CustomExceptions.ExceptionType.DELIMITER_NOT_FOUND, "Delimiter not found");
                 }

@@ -9,7 +9,7 @@ namespace IndianCensusDay22
         public ExceptionType type;
         public enum ExceptionType
         {
-            FILE_NOT_EXISTS, IMPROPER_EXTENSION, DELIMITER_NOT_FOUND,
+            FILE_NOT_EXISTS, WRONG_EXTENSION, DELIMITER_NOT_FOUND,
             INCORRECT_HEADER
         }
         public CustomExceptions()

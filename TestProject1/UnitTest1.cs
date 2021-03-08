@@ -5,7 +5,7 @@ namespace TestProject1
 {
     public class Tests
     {
-        string folderPath = @"C:\Users\User\source\repos\fileIO\IndianCensusDay22\IndianCensus\CsvFile\";
+        string folderPath = @"C:\Users\Vijay Kshirasagar\Desktop\C# Work\CORE\IndianCensusDay22\CSV";
         string validStateCensusFileState = "IndiaStateCensusData.csv";
         string validExtensionFileStateCode = "IndiaStateCode.csv";
         string invalidExtensionFileState = "IndiaStateCode.txt";
@@ -45,7 +45,7 @@ namespace TestProject1
         public void GivenIncorrectType_ReturnsCustomException()
         {
             CustomExceptions Exception = Assert.Throws<CustomExceptions>(() => censusAnalyser.LoadCensusData(folderPath + invalidExtensionFileState, "State,Population,AreaInSqKm,DensityPerSqKm"));
-            Assert.AreEqual(CustomExceptions.ExceptionType.IMPROPER_EXTENSION, Exception.type);
+            Assert.AreEqual(CustomExceptions.ExceptionType.WRONG_EXTENSION, Exception.type);
         }
 
         /// <summary>
