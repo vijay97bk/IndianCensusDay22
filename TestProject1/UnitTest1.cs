@@ -20,7 +20,7 @@ namespace TestProject1
             censusAnalyser = new CensusAnalyser();
         }
         /// <summary>
-        /// TC1.1-All data in Indian state code is load in the file or not
+        /// TC1.1-All data in Indian state Info. is load in the file or not
         /// </summary>
         [Test]
         public void GivenCSVFile_TestIfRecordsAreSame()
@@ -66,5 +66,44 @@ namespace TestProject1
             CustomExceptions Exception = Assert.Throws<CustomExceptions>(() => censusAnalyser.LoadCensusData(folderPath + invalidHeaderState, "State,Population,AreaInSqKm,DensityPerSqKm"));
             Assert.AreEqual(CustomExceptions.ExceptionType.INCORRECT_HEADER, Exception.type);
         }
+
+        //UC2.1
+        [Test]
+        public void GivenStateCodeCSVFile_TestIfRecordsAreSame()
+        {
+            censusAnalyser.datamap = censusAnalyser.LoadCensusData(folderPath + validExtensionFileStateCode, "SrNo,State Name,TIN,StateCode");
+            Assert.AreEqual(37, censusAnalyser.datamap.Count);
+        }
+        //UC2.2
+        [Test]
+        public void GivenStateCodeIncorrectFileName_ReturnsCustomException()
+        {
+            CustomExceptions Exception = Assert.Throws<CustomExceptions>(() => censusAnalyser.LoadCensusData(folderPath + validExtensionFileStateCode + "hi", "SrNo, State Name, TIN, StateCode"));
+            Assert.AreEqual(CustomExceptions.ExceptionType.FILE_NOT_EXISTS, Exception.type);
+        }
+
+        //UC2.3
+        [Test]
+        public void GivenStateCodeIncorrectType_ReturnsCustomException()
+        {
+            CustomExceptions Exception = Assert.Throws<CustomExceptions>(() => censusAnalyser.LoadCensusData(folderPath + invalidExtensionFileState, "SrNo,State Name,TIN,StateCode"));
+            Assert.AreEqual(CustomExceptions.ExceptionType.WRONG_EXTENSION, Exception.type);
+        }
+
+        //UC2.4
+        [Test]
+        public void GivenStateCodeIncorrectDelimiter_ReturnsCustomException()
+        {
+            CustomExceptions Exception = Assert.Throws<CustomExceptions>(() => censusAnalyser.LoadCensusData(folderPath + invalidDelimiterFileStateCode, "SrNo,State Name,TIN,StateCode"));
+            Assert.AreEqual(CustomExceptions.ExceptionType.DELIMITER_NOT_FOUND, Exception.type);
+        }
+        //UC2.5
+        [Test]
+        public void GivenStateCodeIncorrectHeader_ReturnsCustomException()
+        {
+            CustomExceptions Exception = Assert.Throws<CustomExceptions>(() => censusAnalyser.LoadCensusData(folderPath + invalidHeaderStateCode, "SrNo,State Name,TIN,StateCode"));
+            Assert.AreEqual(CustomExceptions.ExceptionType.INCORRECT_HEADER, Exception.type);
+        }
+
     }
 }
