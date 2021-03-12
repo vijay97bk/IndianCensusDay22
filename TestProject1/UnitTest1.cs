@@ -67,7 +67,7 @@ namespace TestProject1
             Assert.AreEqual(CustomExceptions.ExceptionType.INCORRECT_HEADER, Exception.type);
         }
 
-        //UC2.1
+        //UC2.1 Check number of records are same.
         [Test]
         public void GivenStateCodeCSVFile_TestIfRecordsAreSame()
         {
